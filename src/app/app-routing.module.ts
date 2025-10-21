@@ -1,10 +1,43 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-const routes: Routes = [];
+import { HomeComponent } from "./views/home/home.component";
+import { AnimalCreateComponent } from './components/animal/animal-create/animal-create.component';
+import { AnimalUpdateComponent } from "./components/animal/animal-update/animal-update.component";
+import { AnimalDeleteComponent } from "./components/animal/animal-delete/animal-delete.component";
+import { AnimalCrudComponent } from "./views/animal-crud/animal-crud.component";
+import { DadosReadComponent } from "./components/dados/dados-read/dados-read.component";
+
+
+const routes: Routes = [
+  {
+    path: "",
+    component: HomeComponent
+  },
+  {
+    path: "animals",
+    component: AnimalCrudComponent
+  },
+  {
+    path: "animals/create",
+    component: AnimalCreateComponent
+  },
+  {
+    path: "animals/update/:id",
+    component: AnimalUpdateComponent
+  },
+  {
+    path: "animals/delete/:id",
+    component: AnimalDeleteComponent
+  },
+    {
+    path: "dados",
+    component: DadosReadComponent
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
