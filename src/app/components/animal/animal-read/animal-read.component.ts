@@ -19,7 +19,6 @@ export class animalReadComponent implements OnInit {
     this.animalService.read().subscribe(
       animals => {
         this.animals = animals;
-        // Debug: verificar se as fotos estão sendo retornadas
         console.log('Animais carregados:', animals);
         if (animals && animals.length > 0) {
           animals.forEach(animal => {
@@ -39,19 +38,16 @@ export class animalReadComponent implements OnInit {
       return null;
     }
     
-    // Se a foto começa com http, é uma URL externa
     if (foto.startsWith('http://') || foto.startsWith('https://')) {
       return foto;
     }
     
-    // Caso contrário, busca na pasta de imagens do backend
     const imageUrl = `${environment.apiUrl}/images/${foto}`;
     console.log('Construindo URL da imagem:', imageUrl);
     return imageUrl;
   }
 
   onImageError(animalId: number, event: any): void {
-    // Marca que houve erro ao carregar a imagem deste animal
     console.error(`Erro ao carregar imagem do animal ${animalId}:`, event);
     this.imageError[animalId] = true;
   }

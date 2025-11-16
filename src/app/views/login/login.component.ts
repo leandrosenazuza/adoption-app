@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Se já estiver autenticado, redireciona
     if (this.authService.isAuthenticated()) {
       this.router.navigate(['/']);
     }

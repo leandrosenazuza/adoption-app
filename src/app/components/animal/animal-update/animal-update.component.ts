@@ -37,10 +37,8 @@ export class AnimalUpdateComponent implements OnInit {
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get("id");
     
-    // Carregar dados do animal
     this.animalService.readById(id).subscribe((animal) => {
       this.animal = animal;
-      // Extrair IDs dos objetos relacionados se vierem do backend
       if ((animal as any).raca?.id) {
         this.animal.racaId = (animal as any).raca.id;
       }
@@ -57,12 +55,10 @@ export class AnimalUpdateComponent implements OnInit {
       if ((animal as any).sexo) {
         this.animal.sexo = (animal as any).sexo;
       }
-      // Garantir valores padrão para campos booleanos
       if (this.animal.isCastrado === undefined) this.animal.isCastrado = false;
       if (this.animal.isVermifugado === undefined) this.animal.isVermifugado = false;
       if (this.animal.isVacinado === undefined) this.animal.isVacinado = false;
       
-      // Carregar preview da imagem atual se existir
       if (this.animal.foto) {
         if (this.animal.foto.startsWith('http')) {
           this.imagePreview = this.animal.foto;
@@ -72,7 +68,6 @@ export class AnimalUpdateComponent implements OnInit {
       }
     });
 
-    // Carregar opções dos selects
     this.racaService.getAll().subscribe(racas => this.racas = racas);
     this.comportamentoService.getAll().subscribe(comportamentos => this.comportamentos = comportamentos);
     this.cirurgiaService.getAll().subscribe(cirurgias => this.cirurgias = cirurgias);
@@ -81,13 +76,11 @@ export class AnimalUpdateComponent implements OnInit {
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      // Validar tipo de arquivo
       if (!file.type.match(/image\/*/)) {
         this.animalService.showMessage('Por favor, selecione apenas arquivos de imagem!');
         return;
       }
       
-      // Validar tamanho (máximo 5MB)
       if (file.size > 5 * 1024 * 1024) {
         this.animalService.showMessage('A imagem deve ter no máximo 5MB!');
         return;
@@ -95,7 +88,6 @@ export class AnimalUpdateComponent implements OnInit {
 
       this.selectedFile = file;
       
-      // Criar preview
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.imagePreview = e.target.result;
@@ -105,10 +97,8 @@ export class AnimalUpdateComponent implements OnInit {
   }
 
   updateAnimal(): void {
-    // Define isCirurgia baseado na existência de cirurgiaId
     this.animal.isCirurgia = this.animal.cirurgiaId != null && this.animal.cirurgiaId !== undefined;
     
-    // Se houver arquivo selecionado, fazer upload primeiro
     if (this.selectedFile) {
       this.isUploading = true;
       this.imageUploadService.uploadImage(this.selectedFile).subscribe(
@@ -122,7 +112,6 @@ export class AnimalUpdateComponent implements OnInit {
         }
       );
     } else {
-      // Se não houver arquivo novo, salvar diretamente (mantém foto atual ou URL)
       this.saveAnimal();
     }
   }

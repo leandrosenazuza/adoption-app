@@ -48,7 +48,6 @@ export class AnimalCreateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Carregar opções dos selects
     this.racaService.getAll().subscribe(racas => this.racas = racas);
     this.comportamentoService.getAll().subscribe(comportamentos => this.comportamentos = comportamentos);
     this.cirurgiaService.getAll().subscribe(cirurgias => this.cirurgias = cirurgias);
@@ -57,13 +56,11 @@ export class AnimalCreateComponent implements OnInit {
   onFileSelected(event: any): void {
     const file = event.target.files[0];
     if (file) {
-      // Validar tipo de arquivo
       if (!file.type.match(/image\/*/)) {
         this.animalService.showMessage('Por favor, selecione apenas arquivos de imagem!');
         return;
       }
       
-      // Validar tamanho (máximo 5MB)
       if (file.size > 5 * 1024 * 1024) {
         this.animalService.showMessage('A imagem deve ter no máximo 5MB!');
         return;
@@ -71,7 +68,6 @@ export class AnimalCreateComponent implements OnInit {
 
       this.selectedFile = file;
       
-      // Criar preview
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.imagePreview = e.target.result;
@@ -81,10 +77,8 @@ export class AnimalCreateComponent implements OnInit {
   }
 
   createAnimal(): void {
-    // Define isCirurgia baseado na existência de cirurgiaId
     this.animal.isCirurgia = this.animal.cirurgiaId != null && this.animal.cirurgiaId !== undefined;
     
-    // Se houver arquivo selecionado, fazer upload primeiro
     if (this.selectedFile) {
       this.isUploading = true;
       this.imageUploadService.uploadImage(this.selectedFile).subscribe(
@@ -98,7 +92,6 @@ export class AnimalCreateComponent implements OnInit {
         }
       );
     } else {
-      // Se não houver arquivo, salvar diretamente (pode ter URL ou estar vazio)
       this.saveAnimal();
     }
   }

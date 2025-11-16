@@ -36,7 +36,6 @@ export class EstatisticasComponent implements OnInit {
   carregarEstatisticas(): void {
     this.isLoading = true;
     
-    // Carregar dados dos municípios
     this.estatisticasService.getEstatisticasMunicipios().subscribe(
       (dados) => {
         this.dataSource = dados;
@@ -48,7 +47,6 @@ export class EstatisticasComponent implements OnInit {
       }
     );
 
-    // Carregar dados gerais
     this.estatisticasService.getEstatisticasGerais().subscribe(
       (gerais) => {
         this.estatisticasGerais = gerais;

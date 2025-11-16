@@ -24,7 +24,6 @@ export class AnimalService {
   }
 
   create(animal: Animal): Observable<Animal> {
-    // Garante que os campos obrigatórios estejam presentes
     const animalDTO: any = {
       nome: animal.nome,
       idade: animal.idade,
@@ -62,7 +61,6 @@ export class AnimalService {
 
   update(animal: Animal): Observable<Animal> {
     const url = `${this.baseUrl}/put/${animal.id}`;
-    // Garante que os IDs sejam enviados corretamente (caso o backend retorne objetos completos)
     const animalDTO: any = {
       id: animal.id,
       nome: animal.nome,
@@ -108,13 +106,11 @@ export class AnimalService {
       errorMessage = e.message;
     }
     
-    // Se for erro 404, não mostra mensagem de erro genérica
     if (e.status === 404) {
       console.warn("Recurso não encontrado (404)");
       return EMPTY;
     }
     
-    // Se for erro de conexão
     if (e.status === 0 || e.status === undefined) {
       errorMessage = "Erro de conexão. Verifique se o backend está rodando em http://localhost:8080";
     }

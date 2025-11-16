@@ -26,7 +26,6 @@ export class MonitoramentoIotComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.carregarDadosIot();
-    // Atualizar dados a cada 5 segundos
     this.updateSubscription = interval(5000).subscribe(() => {
       this.carregarDadosIot();
     });
@@ -40,7 +39,6 @@ export class MonitoramentoIotComponent implements OnInit, OnDestroy {
 
   carregarDadosIot(): void {
     this.isLoading = true;
-    // Buscar 3 sensores diferentes
     this.iotService.getDadosIotMultiplos(3).subscribe(
       (dados) => {
         this.dadosIot = dados;

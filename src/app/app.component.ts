@@ -13,7 +13,6 @@ export class AppComponent {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
-      // Esconde header/nav/footer na tela de login
       this.showHeaderNavFooter = !event.url.includes('/login');
     });
   }

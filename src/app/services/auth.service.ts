@@ -23,7 +23,6 @@ export class AuthService {
   public isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    // Verificar se já existe token salvo
     if (this.hasToken()) {
       this.isAuthenticatedSubject.next(true);
     }
@@ -38,7 +37,6 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.baseUrl}/login`, loginRequest).pipe(
       tap(response => {
         if (response.sucesso) {
-          // Salvar token simples (em produção, use JWT)
           localStorage.setItem('auth_token', 'authenticated');
           localStorage.setItem('usuario', usuario);
           this.isAuthenticatedSubject.next(true);
