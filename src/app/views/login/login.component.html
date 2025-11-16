@@ -1,0 +1,32 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <div class="logo-header">
+        <img src="assets/img/logoPata.png" alt="Logo" class="login-logo">
+        <mat-card-title>Sistema de Adoção</mat-card-title>
+      </div>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <form (ngSubmit)="login()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Usuário</mat-label>
+          <input matInput [(ngModel)]="usuario" name="usuario" required autocomplete="username">
+          <mat-icon matPrefix>person</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Senha</mat-label>
+          <input matInput type="password" [(ngModel)]="senha" name="senha" required autocomplete="current-password">
+          <mat-icon matPrefix>lock</mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="full-width login-button" [disabled]="isLoading">
+          <mat-icon *ngIf="!isLoading">login</mat-icon>
+          <mat-icon *ngIf="isLoading" class="spinner">hourglass_empty</mat-icon>
+          {{ isLoading ? 'Entrando...' : 'Entrar' }}
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
