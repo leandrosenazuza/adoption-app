@@ -6,7 +6,6 @@ import { AnimalCreateComponent } from './components/animal/animal-create/animal-
 import { AnimalUpdateComponent } from "./components/animal/animal-update/animal-update.component";
 import { AnimalDeleteComponent } from "./components/animal/animal-delete/animal-delete.component";
 import { AnimalCrudComponent } from "./views/animal-crud/animal-crud.component";
-import { DadosReadComponent } from "./components/dados/dados-read/dados-read.component";
 
 
 const routes: Routes = [
@@ -29,11 +28,7 @@ const routes: Routes = [
   {
     path: "animals/delete/:id",
     component: AnimalDeleteComponent
-  },
-    {
-    path: "dados",
-    component: DadosReadComponent
-  },
+  }
 ];
 
 @NgModule({

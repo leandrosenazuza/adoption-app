@@ -26,6 +26,9 @@ import { animalRead2Component } from './components/animal/animal-read2/animal-re
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 import { RedDirective } from './directives/red.directive';
 
 import localePt from '@angular/common/locales/pt';
@@ -35,7 +38,6 @@ import { AnimalUpdateComponent } from './components/animal/animal-update/animal-
 import { AnimalDeleteComponent } from './components/animal/animal-delete/animal-delete.component';
 import { animalReadComponent } from './components/animal/animal-read/animal-read.component';
 import { AnimalCrudComponent } from './views/animal-crud/animal-crud.component';
-import { DadosReadComponent } from './components/dados/dados-read/dados-read.component';
 
 registerLocaleData(localePt);
 
@@ -54,7 +56,6 @@ registerLocaleData(localePt);
     ForDirective,
     AnimalUpdateComponent,
     AnimalDeleteComponent,
-    DadosReadComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +74,9 @@ registerLocaleData(localePt);
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
   ],
   providers: [{
     provide: LOCALE_ID,

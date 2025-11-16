@@ -10,7 +10,7 @@ import { AnimalService } from '../animal.service';
 export class animalReadComponent implements OnInit {
 
   animals: Animal[]
-  displayedColumns = ['id', 'name', 'price', 'action']
+  displayedColumns = ['id', 'nome', 'idade', 'action']
   
   constructor(private animalService: AnimalService) { }
 

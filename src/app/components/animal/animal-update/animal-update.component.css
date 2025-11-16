@@ -4,6 +4,46 @@ form {
     margin-top: 20px;
 }
 
+.form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-row mat-form-field {
+    flex: 1;
+}
+
+.form-row .full-width {
+    width: 100%;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.checkbox-group mat-checkbox {
+    margin: 0;
+}
+
 button {
     margin: 20px 15px 0px 0px;
+}
+
+mat-card-content {
+    padding: 24px;
+}
+
+mat-card-actions {
+    padding: 16px 24px;
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+    }
 }

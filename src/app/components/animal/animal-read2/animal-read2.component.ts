@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { animalRead2DataSource } from './animal-read2-datasource';
+import { AnimalService } from '../animal.service';
 
 @Component({
   selector: 'app-animal-read2',
@@ -17,10 +18,12 @@ export class animalRead2Component implements AfterViewInit, OnInit {
   dataSource: animalRead2DataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'price'];
+  displayedColumns = ['id', 'nome', 'idade'];
+
+  constructor(private animalService: AnimalService) {}
 
   ngOnInit() {
-    this.dataSource = new animalRead2DataSource();
+    this.dataSource = new animalRead2DataSource(this.animalService);
   }
 
   ngAfterViewInit() {

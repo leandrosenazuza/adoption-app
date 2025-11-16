@@ -1,21 +1,85 @@
 <mat-card>
     <mat-card-title>Novo Animal</mat-card-title>
-    <form>
-        <mat-form-field>
-            <input matInput placeholder="Nome"
-                [(ngModel)]="animal.name" name="name">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Raça"
-                [(ngModel)]="animal.price" name="price">
-        </mat-form-field>
-    </form>
-    <button mat-raised-button (click)="createAnimal()" color="primary">
-        Salvar
-    </button>
-    
-    <button mat-raised-button (click)="cancel()">
-        Cancelar
-    </button>
-</mat-card>
+    <mat-card-content>
+        <form>
+            <div class="form-row">
+                <mat-form-field>
+                    <input matInput placeholder="Nome" [(ngModel)]="animal.nome" name="nome" required>
+                </mat-form-field>
+            </div>
 
+            <div class="form-row">
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Idade" [(ngModel)]="animal.idade" name="idade" required min="0" step="0.1">
+                </mat-form-field>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field>
+                    <mat-label>Raça</mat-label>
+                    <mat-select [(ngModel)]="animal.racaId" name="racaId" required>
+                        <mat-option *ngFor="let raca of racas" [value]="raca.id">
+                            {{raca.descricaoRaca}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field>
+                    <mat-label>Sexo</mat-label>
+                    <mat-select [(ngModel)]="animal.sexo" name="sexo" required>
+                        <mat-option *ngFor="let sexo of sexos" [value]="sexo">
+                            {{sexo}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field>
+                    <mat-label>Comportamento</mat-label>
+                    <mat-select [(ngModel)]="animal.comportamentoId" name="comportamentoId" required>
+                        <mat-option *ngFor="let comportamento of comportamentos" [value]="comportamento.id">
+                            {{comportamento.descricaoComportamento}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field>
+                    <mat-label>Cirurgia (Opcional)</mat-label>
+                    <mat-select [(ngModel)]="animal.cirurgiaId" name="cirurgiaId">
+                        <mat-option [value]="null">Nenhuma</mat-option>
+                        <mat-option *ngFor="let cirurgia of cirurgias" [value]="cirurgia.id">
+                            {{cirurgia.descricaoCirurgia}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <div class="form-row checkbox-group">
+                <mat-checkbox [(ngModel)]="animal.isCastrado" name="isCastrado">Castrado</mat-checkbox>
+                <mat-checkbox [(ngModel)]="animal.isVermifugado" name="isVermifugado">Vermifugado</mat-checkbox>
+                <mat-checkbox [(ngModel)]="animal.isVacinado" name="isVacinado">Vacinado</mat-checkbox>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field class="full-width">
+                    <textarea matInput placeholder="Descrição do Animal" [(ngModel)]="animal.descricaoAnimal" name="descricaoAnimal" rows="3"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="form-row">
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="URL da Foto (Opcional)" [(ngModel)]="animal.foto" name="foto">
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="createAnimal()" color="primary">Salvar</button>
+        <button mat-raised-button (click)="cancel()">Cancelar</button>
+    </mat-card-actions>
+</mat-card>

@@ -1,20 +1,19 @@
 <mat-card>
-    <mat-card-title>Excluir A</mat-card-title>
-    <form>
-        <mat-form-field>
-            <input matInput placeholder="Nome"
-                [value]="animal.name" name="name" disabled>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Preço (R$)"
-                [value]="animal.price" name="price" disabled>
-        </mat-form-field>
-    </form>
-    <button mat-raised-button (click)="deleteanimal()" color="warn">
-        Excluir
-    </button>
-    
-    <button mat-raised-button (click)="cancel()">
-        Cancelar
-    </button>
+    <mat-card-title>Excluir Animal</mat-card-title>
+    <mat-card-content *ngIf="animal">
+        <p><strong>Tem certeza que deseja excluir este animal?</strong></p>
+        <div class="info-section">
+            <p><strong>Nome:</strong> {{animal.nome}}</p>
+            <p><strong>Idade:</strong> {{animal.idade}} anos</p>
+            <p *ngIf="animal.descricaoAnimal"><strong>Descrição:</strong> {{animal.descricaoAnimal}}</p>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button (click)="deleteanimal()" color="warn">
+            Excluir
+        </button>
+        <button mat-raised-button (click)="cancel()">
+            Cancelar
+        </button>
+    </mat-card-actions>
 </mat-card>

@@ -11,8 +11,8 @@ export class AnimalCrudComponent implements OnInit {
 
   constructor(private router: Router, private headerService: HeaderService) {
     headerService.headerData = {
-      title: 'Cadastro de animals',
-      icon: 'storefront',
+      title: 'Cadastro de Animais',
+      icon: 'pets',
       routeUrl: '/animals'
     }
   }

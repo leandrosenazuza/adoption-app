@@ -1,3 +1,4 @@
 export const environment = {
-  animalion: true
+  production: true,
+  apiUrl: 'http://localhost:8080'
 };
