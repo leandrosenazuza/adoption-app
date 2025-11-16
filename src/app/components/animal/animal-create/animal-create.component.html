@@ -72,14 +72,36 @@
             </div>
 
             <div class="form-row">
-                <mat-form-field class="full-width">
-                    <input matInput placeholder="URL da Foto (Opcional)" [(ngModel)]="animal.foto" name="foto">
-                </mat-form-field>
+                <div class="image-upload-section">
+                    <label class="upload-label">
+                        <input type="file" accept="image/*" (change)="onFileSelected($event)" style="display: none;" #fileInput>
+                        <button mat-raised-button type="button" (click)="fileInput.click()" color="accent">
+                            <mat-icon>cloud_upload</mat-icon>
+                            Selecionar Imagem
+                        </button>
+                        <span class="upload-hint">ou use URL abaixo</span>
+                    </label>
+                    
+                    <div *ngIf="imagePreview" class="image-preview-container">
+                        <img [src]="imagePreview" alt="Preview" class="image-preview">
+                        <button mat-icon-button type="button" (click)="removeImage()" color="warn" class="remove-image-btn">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+                    
+                    <mat-form-field class="full-width" style="margin-top: 16px;">
+                        <input matInput placeholder="Ou digite URL da Foto (ex: https://exemplo.com/foto.jpg)" [(ngModel)]="animal.foto" name="foto">
+                        <mat-hint>Deixe vazio para usar ícone padrão</mat-hint>
+                    </mat-form-field>
+                </div>
             </div>
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button (click)="createAnimal()" color="primary">Salvar</button>
-        <button mat-raised-button (click)="cancel()">Cancelar</button>
+        <button mat-raised-button (click)="createAnimal()" color="primary" [disabled]="isUploading">
+            <mat-icon *ngIf="isUploading">hourglass_empty</mat-icon>
+            {{isUploading ? 'Salvando...' : 'Salvar'}}
+        </button>
+        <button mat-raised-button (click)="cancel()" [disabled]="isUploading">Cancelar</button>
     </mat-card-actions>
 </mat-card>

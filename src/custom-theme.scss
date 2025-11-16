@@ -1,0 +1,119 @@
+@import '~@angular/material/theming';
+
+// Inclui as funções de tema do Material
+@include mat-core();
+
+// Define paleta de cores terrosas/naturais que combinam com backgrounds de animais
+// Cores principais: marrom terroso, bege, laranja suave
+$custom-primary: mat-palette($mat-brown, 700, 500, 900);
+$custom-accent: mat-palette($mat-orange, 400, 300, 600);
+$custom-warn: mat-palette($mat-deep-orange, 600);
+
+// Cria o tema
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+
+// Aplica o tema
+@include angular-material-theme($custom-theme);
+
+// Estilos globais adicionais
+.mat-toolbar {
+  background-color: #5D4037 !important; // Marrom escuro para header
+  color: white !important;
+}
+
+.mat-raised-button.mat-primary {
+  background-color: #6D4C41 !important; // Marrom médio
+  color: white !important;
+}
+
+.mat-raised-button.mat-primary:hover {
+  background-color: #5D4037 !important;
+}
+
+// Botões sem cor específica (fundo branco) -> azul claro com texto preto
+.mat-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+  background-color: #81D4FA !important; // Azul claro
+  color: #000000 !important; // Preto
+  border: 1px solid #4FC3F7 !important;
+}
+
+.mat-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn):hover {
+  background-color: #4FC3F7 !important; // Azul um pouco mais escuro no hover
+  color: #000000 !important;
+}
+
+.mat-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) .mat-button-wrapper {
+  color: #000000 !important;
+}
+
+// Botões mat-button sem cor específica
+.mat-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+  color: #000000 !important;
+  background-color: #81D4FA !important;
+}
+
+.mat-button:not(.mat-primary):not(.mat-accent):not(.mat-warn):hover {
+  background-color: #4FC3F7 !important;
+  color: #000000 !important;
+}
+
+.mat-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) .mat-button-wrapper {
+  color: #000000 !important;
+}
+
+// Botões primários mantêm texto branco (exceto botão de editar)
+.mat-raised-button.mat-primary:not(.edit-button),
+.mat-button.mat-primary:not(.edit-button) {
+  color: white !important;
+}
+
+.mat-raised-button.mat-primary:not(.edit-button) .mat-button-wrapper,
+.mat-button.mat-primary:not(.edit-button) .mat-button-wrapper {
+  color: white !important;
+}
+
+// Botão de editar - amarelo clarinho com texto preto
+.mat-button.mat-primary.edit-button,
+.mat-raised-button.mat-primary.edit-button {
+  background-color: #FFF9C4 !important; // Amarelo clarinho
+  color: #000000 !important; // Preto
+  border: 1px solid #FFF59D !important;
+}
+
+.mat-button.mat-primary.edit-button:hover,
+.mat-raised-button.mat-primary.edit-button:hover {
+  background-color: #FFF59D !important; // Amarelo um pouco mais escuro no hover
+  color: #000000 !important;
+}
+
+.mat-button.mat-primary.edit-button .mat-button-wrapper,
+.mat-raised-button.mat-primary.edit-button .mat-button-wrapper,
+.mat-button.mat-primary.edit-button mat-icon,
+.mat-raised-button.mat-primary.edit-button mat-icon,
+.mat-button.mat-primary.edit-button span,
+.mat-raised-button.mat-primary.edit-button span,
+.mat-button.mat-primary.edit-button *,
+.mat-raised-button.mat-primary.edit-button * {
+  color: #000000 !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #6D4C41 !important;
+}
+
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #6D4C41 !important;
+}
+
+.mat-checkbox-checked.mat-primary .mat-checkbox-background {
+  background-color: #6D4C41 !important;
+}
+
+.mat-radio-button.mat-primary .mat-radio-inner-circle {
+  background-color: #6D4C41 !important;
+}
+
+.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #6D4C41 !important;
+}
+

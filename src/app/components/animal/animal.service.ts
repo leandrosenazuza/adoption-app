@@ -94,13 +94,32 @@ export class AnimalService {
 
   errorHandler(e: any): Observable<any> {
     let errorMessage = "Ocorreu um erro!";
-    if (e.error && e.error.message) {
-      errorMessage = e.error.message;
+    console.error("Erro completo na requisição:", e);
+    
+    if (e.error) {
+      if (typeof e.error === 'string') {
+        errorMessage = e.error;
+      } else if (e.error.message) {
+        errorMessage = e.error.message;
+      } else if (e.error.error) {
+        errorMessage = e.error.error;
+      }
     } else if (e.message) {
       errorMessage = e.message;
     }
+    
+    // Se for erro 404, não mostra mensagem de erro genérica
+    if (e.status === 404) {
+      console.warn("Recurso não encontrado (404)");
+      return EMPTY;
+    }
+    
+    // Se for erro de conexão
+    if (e.status === 0 || e.status === undefined) {
+      errorMessage = "Erro de conexão. Verifique se o backend está rodando em http://localhost:8080";
+    }
+    
     this.showMessage(errorMessage, true);
-    console.error("Erro na requisição:", e);
     return EMPTY;
   }
 }

@@ -4,7 +4,7 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .red {
-    color: #e35e6b;
+    color: #c62828;
 }
 
 .v-middle {
@@ -17,6 +17,53 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .msg-error {
-    background-color: #e35e6b;
+    background-color: #D84315;
     color: #fff;
+}
+
+/* Estilos globais para tema terroso/natural */
+.mat-primary {
+    color: #6D4C41 !important;
+}
+
+a {
+    color: #6D4C41;
+}
+
+a:hover {
+    color: #5D4037;
+}
+
+/* Botões sem cor específica (fundo branco) -> azul claro com texto preto */
+button.mat-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn),
+button.mat-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) {
+    background-color: #81D4FA !important; /* Azul claro */
+    color: #000000 !important; /* Preto */
+    border: 1px solid #4FC3F7 !important;
+}
+
+button.mat-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn):hover,
+button.mat-button:not(.mat-primary):not(.mat-accent):not(.mat-warn):hover {
+    background-color: #4FC3F7 !important;
+    color: #000000 !important;
+}
+
+button.mat-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) .mat-button-wrapper,
+button.mat-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) .mat-button-wrapper,
+button.mat-raised-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) span,
+button.mat-button:not(.mat-primary):not(.mat-accent):not(.mat-warn) span {
+    color: #000000 !important;
+}
+
+/* Botões primários mantêm texto branco */
+button.mat-raised-button.mat-primary,
+button.mat-button.mat-primary {
+    color: white !important;
+}
+
+button.mat-raised-button.mat-primary .mat-button-wrapper,
+button.mat-button.mat-primary .mat-button-wrapper,
+button.mat-raised-button.mat-primary span,
+button.mat-button.mat-primary span {
+    color: white !important;
 }
