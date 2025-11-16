@@ -1,0 +1,105 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: url('../../../assets/img/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px;
+  position: relative;
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.98);
+}
+
+.logo-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-logo {
+  max-height: 80px;
+  margin-bottom: 16px;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  padding: 24px 24px 0;
+}
+
+mat-card-title {
+  text-align: center;
+  color: #5D4037;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+mat-card-content {
+  padding: 24px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.login-button {
+  margin-top: 8px;
+  height: 48px;
+  font-size: 1rem;
+}
+
+.login-button mat-icon {
+  margin-right: 8px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+mat-form-field {
+  margin-bottom: 8px;
+}
+
+mat-icon[matPrefix] {
+  margin-right: 8px;
+  color: #6D4C41;
+}
+
+@media (max-width: 600px) {
+  .login-card {
+    max-width: 100%;
+  }
+}
+

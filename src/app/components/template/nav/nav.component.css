@@ -1,0 +1,22 @@
+.sidenav {
+    background-color: #8D6E63 !important; /* Marrom claro/bege para nav (diferente do header) */
+    width: 200px;
+}
+
+.sidenav a {
+    color: #FFF;
+}
+
+.sidenav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidenav i {
+    padding-right: 10px;
+}
+
+.content {
+    padding: 16px;
+    background-color: #FFF;
+    min-height: calc(100vh - 64px);
+}

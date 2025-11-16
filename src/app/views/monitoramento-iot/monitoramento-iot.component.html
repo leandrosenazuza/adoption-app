@@ -1,0 +1,53 @@
+<mat-card class="iot-card">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>sensors</mat-icon>
+      Monitoramento IoT
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="iot-content">
+      <p>
+        Sistema de monitoramento em tempo real utilizando tecnologia IoT (Internet das Coisas)
+        para acompanhar o bem-estar e localização dos animais. Os dados são atualizados automaticamente a cada 5 segundos.
+      </p>
+      
+      <div *ngIf="isLoading" class="loading">
+        <mat-icon class="spinner">hourglass_empty</mat-icon>
+        <p>Carregando dados dos sensores...</p>
+      </div>
+
+      <div class="iot-grid" *ngIf="!isLoading && dadosIot.length > 0">
+        <mat-card class="sensor-card" *ngFor="let dado of dadosIot">
+          <mat-card-header>
+            <mat-card-title>{{ dado.localizacao }}</mat-card-title>
+            <mat-card-subtitle>Atualizado: {{ formatarTimestamp(dado.timestamp) }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="sensor-values">
+              <div class="sensor-value">
+                <mat-icon>thermostat</mat-icon>
+                <div>
+                  <span class="value">{{ dado.temperatura }}°C</span>
+                  <span class="label">Temperatura</span>
+                </div>
+              </div>
+              <div class="sensor-value">
+                <mat-icon>water_drop</mat-icon>
+                <div>
+                  <span class="value">{{ dado.umidade }}%</span>
+                  <span class="label">Umidade</span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div *ngIf="!isLoading && dadosIot.length === 0" class="no-data">
+        <mat-icon>error_outline</mat-icon>
+        <p>Nenhum dado disponível no momento.</p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
