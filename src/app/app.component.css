@@ -1,0 +1,28 @@
+.public-content {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.authenticated-content {
+  position: fixed;
+  top: 64px;
+  left: 200px;
+  right: 0;
+  bottom: 48px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 16px;
+  box-sizing: border-box;
+  z-index: 0;
+  margin: 0;
+  width: calc(100% - 200px);
+  max-width: calc(100% - 200px);
+  min-width: 0;
+  background-color: #fff;
+}
+
+.authenticated-content > * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+

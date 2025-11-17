@@ -1,0 +1,55 @@
+<div class="interessados-container">
+  <h2>
+    <mat-icon>people</mat-icon>
+    Interessados em Adoção
+  </h2>
+
+  <p class="description">
+    Lista de pessoas que demonstraram interesse em adotar os animais cadastrados no sistema.
+  </p>
+
+  <div *ngIf="isLoading" class="loading">
+    <mat-spinner></mat-spinner>
+    <p>Carregando interessados...</p>
+  </div>
+
+  <div *ngIf="!isLoading && interessados.length === 0" class="no-data">
+    <mat-icon>info</mat-icon>
+    <p>Nenhum interesse registrado ainda.</p>
+  </div>
+
+  <table mat-table [dataSource]="interessados" class="mat-elevation-z8" *ngIf="!isLoading && interessados.length > 0">
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let interessado">{{interessado.nomeInteressado}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>E-mail</th>
+      <td mat-cell *matCellDef="let interessado">{{interessado.emailInteressado}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="telefone">
+      <th mat-header-cell *matHeaderCellDef>Telefone</th>
+      <td mat-cell *matCellDef="let interessado">{{interessado.telefoneInteressado}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="animal">
+      <th mat-header-cell *matHeaderCellDef>Animal de Interesse</th>
+      <td mat-cell *matCellDef="let interessado">{{getNomeAnimal(interessado.animalDTO)}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let interessado">
+        <button mat-icon-button color="warn" (click)="deletar(interessado.id)" matTooltip="Excluir">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
