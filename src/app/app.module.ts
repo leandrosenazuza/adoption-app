@@ -43,6 +43,10 @@ import { LoginComponent } from './views/login/login.component';
 import { SobreComponent } from './views/sobre/sobre.component';
 import { MonitoramentoIotComponent } from './views/monitoramento-iot/monitoramento-iot.component';
 import { EstatisticasComponent } from './views/estatisticas/estatisticas.component';
+import { InteressadosComponent } from './views/interessados/interessados.component';
+import { DemonstrarInteresseComponent } from './components/animal/demonstrar-interesse/demonstrar-interesse.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 registerLocaleData(localePt);
 
@@ -65,6 +69,8 @@ registerLocaleData(localePt);
     SobreComponent,
     MonitoramentoIotComponent,
     EstatisticasComponent,
+    InteressadosComponent,
+    DemonstrarInteresseComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,6 +93,8 @@ registerLocaleData(localePt);
     MatCheckboxModule,
     MatRadioModule,
     MatIconModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
   ],
   providers: [{
     provide: LOCALE_ID,

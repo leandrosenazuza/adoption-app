@@ -14,7 +14,7 @@
                 </i>
                 Animais
             </a>
-            <a mat-list-item routerLink="/monitoramento-iot">
+            <a mat-list-item routerLink="/monitoramento-iot" *ngIf="isAuthenticated">
                 <i class="material-icons">
                     sensors
                 </i>
@@ -25,6 +25,12 @@
                     bar_chart
                 </i>
                 Estatísticas
+            </a>
+            <a mat-list-item routerLink="/interessados" *ngIf="isAuthenticated">
+                <i class="material-icons">
+                    people
+                </i>
+                Interessados
             </a>
             <a mat-list-item routerLink="/sobre">
                 <i class="material-icons">

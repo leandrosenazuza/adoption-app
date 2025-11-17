@@ -4,12 +4,13 @@
 </h2>
 
 <mat-dialog-content>
-  <p class="animal-info">
+  <p class="animal-info" *ngIf="data.animalId > 0">
     <strong>Animal:</strong> {{data.animalNome}}
   </p>
   
   <p class="description">
-    Preencha seus dados para demonstrar interesse em adotar este animal. O mantenedor entrará em contato com você.
+    <span *ngIf="data.animalId > 0">Preencha seus dados para demonstrar interesse em adotar este animal. O mantenedor entrará em contato com você.</span>
+    <span *ngIf="data.animalId === 0">Preencha seus dados para demonstrar interesse em adotar um animal. O mantenedor entrará em contato com você.</span>
   </p>
 
   <form>

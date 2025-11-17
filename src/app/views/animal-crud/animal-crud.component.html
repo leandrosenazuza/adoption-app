@@ -1,5 +1,4 @@
-
-<button mat-raised-button (click)="navigateToAnimalCreate()"
+<button *ngIf="isAuthenticated" mat-raised-button (click)="navigateToAnimalCreate()"
     color="primary">
     Novo animal
 </button>

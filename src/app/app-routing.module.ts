@@ -10,6 +10,7 @@ import { LoginComponent } from "./views/login/login.component";
 import { SobreComponent } from "./views/sobre/sobre.component";
 import { MonitoramentoIotComponent } from "./views/monitoramento-iot/monitoramento-iot.component";
 import { EstatisticasComponent } from "./views/estatisticas/estatisticas.component";
+import { InteressadosComponent } from "./views/interessados/interessados.component";
 import { AuthGuard } from "./guards/auth.guard";
 
 
@@ -20,6 +21,10 @@ const routes: Routes = [
   },
   {
     path: "",
+    component: AnimalCrudComponent
+  },
+  {
+    path: "home",
     component: HomeComponent,
     canActivate: [AuthGuard]
   },
@@ -54,13 +59,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "interessados",
+    component: InteressadosComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: "sobre",
     component: SobreComponent,
     canActivate: [AuthGuard]
   },
   {
     path: "**",
-    redirectTo: "/login"
+    redirectTo: ""
   }
 ];
 
