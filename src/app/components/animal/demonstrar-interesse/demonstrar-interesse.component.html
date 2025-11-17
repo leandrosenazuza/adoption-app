@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>
+  <mat-icon>favorite</mat-icon>
+  Demonstrar Interesse em Adoção
+</h2>
+
+<mat-dialog-content>
+  <p class="animal-info" *ngIf="data.animalId > 0">
+    <strong>Animal:</strong> {{data.animalNome}}
+  </p>
+  
+  <p class="description">
+    <span *ngIf="data.animalId > 0">Preencha seus dados para demonstrar interesse em adotar este animal. O mantenedor entrará em contato com você.</span>
+    <span *ngIf="data.animalId === 0">Preencha seus dados para demonstrar interesse em adotar um animal. O mantenedor entrará em contato com você.</span>
+  </p>
+
+  <form>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nome Completo *</mat-label>
+      <input matInput [(ngModel)]="solicitacao.nomeInteressado" name="nome" required>
+      <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>E-mail *</mat-label>
+      <input matInput type="email" [(ngModel)]="solicitacao.emailInteressado" name="email" required>
+      <mat-icon matPrefix>email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Telefone *</mat-label>
+      <input matInput type="tel" [(ngModel)]="solicitacao.telefoneInteressado" name="telefone" 
+             placeholder="(00) 00000-0000" required>
+      <mat-icon matPrefix>phone</mat-icon>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancelar()" [disabled]="isLoading">
+    Cancelar
+  </button>
+  <button mat-raised-button color="primary" (click)="salvar()" [disabled]="isLoading">
+    <mat-spinner *ngIf="isLoading" diameter="20" style="display: inline-block; margin-right: 8px;"></mat-spinner>
+    <span *ngIf="!isLoading">Enviar Interesse</span>
+    <span *ngIf="isLoading">Enviando...</span>
+  </button>
+</mat-dialog-actions>
+

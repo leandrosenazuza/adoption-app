@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isAuthenticated: boolean = false;
 
   constructor(
     private headerService: HeaderService,
@@ -17,6 +18,12 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authService.isAuthenticated();
+    this.authService.isAuthenticated$.subscribe(
+      isAuth => {
+        this.isAuthenticated = isAuth;
+      }
+    );
   }
 
   get title(): string {

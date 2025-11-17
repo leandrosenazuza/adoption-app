@@ -1,6 +1,7 @@
 import { HeaderService } from '../../components/template/header/header.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-animal-crud',
@@ -8,8 +9,13 @@ import { Router } from '@angular/router'
   styleUrls: ['./animal-crud.component.css']
 })
 export class AnimalCrudComponent implements OnInit {
+  isAuthenticated: boolean = false;
 
-  constructor(private router: Router, private headerService: HeaderService) {
+  constructor(
+    private router: Router, 
+    private headerService: HeaderService,
+    private authService: AuthService
+  ) {
     headerService.headerData = {
       title: 'Cadastro de Animais',
       icon: 'pets',
@@ -18,6 +24,7 @@ export class AnimalCrudComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authService.isAuthenticated();
   }
 
   navigateToAnimalCreate(): void {

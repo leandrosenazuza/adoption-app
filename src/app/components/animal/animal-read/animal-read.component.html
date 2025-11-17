@@ -27,11 +27,15 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button color="primary" routerLink="/animals/update/{{animal.id}}" class="edit-button">
+        <button mat-button color="accent" (click)="abrirFormularioInteresse(animal)">
+          <mat-icon>favorite</mat-icon>
+          Demonstrar Interesse
+        </button>
+        <button *ngIf="isAuthenticated" mat-button color="primary" routerLink="/animals/update/{{animal.id}}" class="edit-button">
           <mat-icon>edit</mat-icon>
           Editar
         </button>
-        <button mat-button color="warn" routerLink="/animals/delete/{{animal.id}}">
+        <button *ngIf="isAuthenticated" mat-button color="warn" routerLink="/animals/delete/{{animal.id}}">
           <mat-icon>delete</mat-icon>
           Excluir
         </button>

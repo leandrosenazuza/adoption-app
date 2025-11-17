@@ -97,20 +97,26 @@
 
 mat-card-actions {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   padding: 8px 16px 16px;
+  justify-content: flex-start;
 }
 
 mat-card-actions button {
   display: flex;
   align-items: center;
   gap: 4px;
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
 }
 
 mat-card-actions button mat-icon {
   font-size: 18px;
   width: 18px;
   height: 18px;
+  flex-shrink: 0;
 }
 
 .edit-button {

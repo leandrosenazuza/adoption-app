@@ -13,7 +13,11 @@
         </a>
     </span>
     <span class="spacer"></span>
-    <button mat-button (click)="logout()" class="logout-button">
+    <button *ngIf="!isAuthenticated" mat-button routerLink="/login" class="login-button">
+        <mat-icon>login</mat-icon>
+        Entrar
+    </button>
+    <button *ngIf="isAuthenticated" mat-button (click)="logout()" class="logout-button">
         <mat-icon>exit_to_app</mat-icon>
         Sair
     </button>

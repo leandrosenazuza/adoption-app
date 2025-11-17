@@ -2,6 +2,9 @@ import { Animal } from '../animal.model';
 import { Component, OnInit } from '@angular/core';
 import { AnimalService } from '../animal.service';
 import { environment } from '../../../../environments/environment';
+import { MatDialog } from '@angular/material/dialog';
+import { DemonstrarInteresseComponent } from '../demonstrar-interesse/demonstrar-interesse.component';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-animal-read',
@@ -12,10 +15,16 @@ export class animalReadComponent implements OnInit {
 
   animals: Animal[]
   imageError: { [key: number]: boolean } = {}
+  isAuthenticated: boolean = false;
   
-  constructor(private animalService: AnimalService) { }
+  constructor(
+    private animalService: AnimalService,
+    private dialog: MatDialog,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+    this.isAuthenticated = this.authService.isAuthenticated();
     this.animalService.read().subscribe(
       animals => {
         this.animals = animals;
@@ -50,6 +59,23 @@ export class animalReadComponent implements OnInit {
   onImageError(animalId: number, event: any): void {
     console.error(`Erro ao carregar imagem do animal ${animalId}:`, event);
     this.imageError[animalId] = true;
+  }
+
+  abrirFormularioInteresse(animal: Animal): void {
+    const dialogRef = this.dialog.open(DemonstrarInteresseComponent, {
+      width: '500px',
+      data: { 
+        animalId: animal.id || 0, 
+        animalNome: animal.nome || 'Animal'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // Formulário foi submetido com sucesso
+        console.log('Interesse registrado para o animal:', animal.nome);
+      }
+    });
   }
 
 }
